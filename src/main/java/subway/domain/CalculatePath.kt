@@ -7,18 +7,18 @@ class CalculatePath {
     fun getShortestTimePath(
         sourceVertex: String,
         targetVertex: String
-    ): Pair<List<String?>, Double> {
+    ): Pair<List<String?>, Double>? {
         val dijkstraShortestPath = DijkstraShortestPath(GraphRepository.getTimeGraph())
-        val path = dijkstraShortestPath.getPath(sourceVertex, targetVertex)
+        val path = dijkstraShortestPath.getPath(sourceVertex, targetVertex) ?: return null
         return Pair(path.vertexList, path.weight)
     }
 
     fun getShortestDistancePath(
         sourceVertex: String,
         targetVertex: String
-    ): Pair<List<String?>, Double> {
+    ): Pair<List<String?>, Double>? {
         val dijkstraShortestPath = DijkstraShortestPath(GraphRepository.getDistanceGraph())
-        val path = dijkstraShortestPath.getPath(sourceVertex, targetVertex)
+        val path = dijkstraShortestPath.getPath(sourceVertex, targetVertex) ?: return null
         return Pair(path.vertexList, path.weight)
     }
 

@@ -1,5 +1,6 @@
 package subway.controller
 
+import subway.constants.ERROR_NOT_CONNECT
 import subway.constants.ERROR_SAME_STATION
 import subway.domain.*
 import subway.exception.Validator
@@ -47,7 +48,10 @@ class Controller {
             outputView.printErrorMessage(ERROR_SAME_STATION)
             return
         }
-        val pathResult = calculatePath.getShortestDistancePath(starting, destination)
+        val pathResult = calculatePath.getShortestDistancePath(starting, destination) ?: run {
+            outputView.printErrorMessage(ERROR_NOT_CONNECT)
+            return
+        }
         val vertexs = pathResult.first
         val distanceWeight = pathResult.second
         val timeWeight = calculatePath.getTimeWeight(vertexs)
@@ -59,7 +63,10 @@ class Controller {
             outputView.printErrorMessage(ERROR_SAME_STATION)
             return
         }
-        val pathResult = calculatePath.getShortestTimePath(starting, destination)
+        val pathResult = calculatePath.getShortestTimePath(starting, destination) ?: run {
+            outputView.printErrorMessage(ERROR_NOT_CONNECT)
+            return
+        }
         val vertexs = pathResult.first
         val timeWeight = pathResult.second
         val distanceWeight = calculatePath.getDistanceWeight(vertexs)

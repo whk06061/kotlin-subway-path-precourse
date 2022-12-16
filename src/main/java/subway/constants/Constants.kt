@@ -15,6 +15,7 @@ const val DESTINATION_INPUT_MENT = "## 도착역을 입력하세요."
 
 // 에러 문구
 const val ERROR_SAME_STATION = "[ERROR] 출발역과 도착역이 동일합니다."
+const val ERROR_NOT_CONNECT = "[ERROR] 출발역과 도착역이 연결되어 있지 않습니다."
 
 // 결과 출력
 const val RESULT_MENT = "## 조회 결과"
