@@ -2,9 +2,9 @@ package subway.domain
 
 class Line(val name: String) {
 
-    private val stations: MutableList<Station> = mutableListOf()
+    private val stations: MutableMap<Station, Pair<Int, Int>> = mutableMapOf()
 
-    fun addStation(station: Station) {
-        stations.add(station)
+    fun addStation(station: Station, nextStationDistance: Int, nextStationTime: Int) {
+        stations[station] = Pair(nextStationDistance, nextStationTime)
     }
 }
