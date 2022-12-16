@@ -1,8 +1,5 @@
 package subway.controller
 
-import org.jgrapht.alg.shortestpath.DijkstraShortestPath
-import org.jgrapht.graph.DefaultWeightedEdge
-import org.jgrapht.graph.WeightedMultigraph
 import subway.constants.ERROR_SAME_STATION
 import subway.domain.*
 import subway.exception.Validator
@@ -12,7 +9,7 @@ import subway.view.OutputView
 class Controller {
     private val outputView = OutputView()
     private val inputView = InputView()
-    private val path = Path()
+    private val calculatePath = CalculatePath()
 
     init {
         val init = Init()
@@ -50,9 +47,11 @@ class Controller {
             outputView.printErrorMessage(ERROR_SAME_STATION)
             return
         }
-        val pathResult = GraphRepository.getShortestDistancePath(starting, destination)
+        val pathResult = calculatePath.getShortestDistancePath(starting, destination)
         val vertexs = pathResult.first
-        val weight = pathResult.second
+        val distanceWeight = pathResult.second
+        val timeWeight = calculatePath.getTimeWeight(vertexs)
+        outputView.printResult(distanceWeight, timeWeight, vertexs)
     }
 
     private fun viewShortestTime() {
@@ -60,9 +59,11 @@ class Controller {
             outputView.printErrorMessage(ERROR_SAME_STATION)
             return
         }
-        val pathResult = GraphRepository.getShortestTimePath(starting, destination)
+        val pathResult = calculatePath.getShortestTimePath(starting, destination)
         val vertexs = pathResult.first
-        val weight = pathResult.second
+        val timeWeight = pathResult.second
+        val distanceWeight = calculatePath.getDistanceWeight(vertexs)
+        outputView.printResult(distanceWeight, timeWeight, vertexs)
     }
 
     private fun readStation(): List<String>? {

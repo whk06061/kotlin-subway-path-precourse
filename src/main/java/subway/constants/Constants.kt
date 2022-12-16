@@ -15,3 +15,11 @@ const val DESTINATION_INPUT_MENT = "## 도착역을 입력하세요."
 
 // 에러 문구
 const val ERROR_SAME_STATION = "[ERROR] 출발역과 도착역이 동일합니다."
+
+// 결과 출력
+const val RESULT_MENT = "## 조회 결과"
+const val RESULT_PREFIX = "[INFO]"
+const val DIVISION = "$RESULT_PREFIX ---"
+const val PRINT_PATH_DISTANCE = "$RESULT_PREFIX 총 거리: %dkm"
+const val PRINT_PATH_TIME = "$RESULT_PREFIX 총 소요 시간: %d분"
+const val PRINT_PATH_STATION = "$RESULT_PREFIX %s"

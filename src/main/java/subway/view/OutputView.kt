@@ -27,9 +27,19 @@ class OutputView {
         println(DESTINATION_INPUT_MENT)
     }
 
-    fun printErrorMessage(message:String){
+    fun printErrorMessage(message: String) {
         println()
         println(message)
+        println()
+    }
+
+    fun printResult(distanceWeight: Double, timeWeight: Double, stations: List<String?>) {
+        println(RESULT_MENT)
+        println(DIVISION)
+        println(PRINT_PATH_DISTANCE.format(distanceWeight.toInt()))
+        println(PRINT_PATH_TIME.format(timeWeight.toInt()))
+        println(DIVISION)
+        stations.forEach { println(PRINT_PATH_STATION.format(it)) }
         println()
     }
 }
