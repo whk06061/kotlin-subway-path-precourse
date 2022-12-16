@@ -17,14 +17,14 @@ class OutputView {
         println(PATH_STANDARD_MENU)
     }
 
-    fun printDeptStationInputMent() {
+    fun printStartingInputMent() {
         println()
-        println(DEPT_STATION_INPUT_MENT)
+        println(STARTING_INPUT_MENT)
     }
 
-    fun printArrivalStationInputMent() {
+    fun printDestinationInputMent() {
         println()
-        println(ARRIVAL_STATION_INPUT_MENT)
+        println(DESTINATION_INPUT_MENT)
     }
 
     fun printErrorMessage(message:String){

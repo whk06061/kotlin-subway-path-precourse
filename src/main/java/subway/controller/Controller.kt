@@ -4,7 +4,7 @@ import org.jgrapht.alg.shortestpath.DijkstraShortestPath
 import org.jgrapht.graph.DefaultWeightedEdge
 import org.jgrapht.graph.WeightedMultigraph
 import subway.constants.ERROR_SAME_STATION
-import subway.domain.Init
+import subway.domain.*
 import subway.exception.Validator
 import subway.view.InputView
 import subway.view.OutputView
@@ -12,10 +12,14 @@ import subway.view.OutputView
 class Controller {
     private val outputView = OutputView()
     private val inputView = InputView()
+    private val path = Path()
 
     init {
         val init = Init()
-        init.initStationToLine(init.initStation(), init.initLine())
+        init.initStation()
+        init.initLine()
+        init.initStationToLine(StationRepository.stations(), LineRepository.lines())
+//        init.initLineToStation(stations, lines)
     }
 
     fun operate() {
@@ -42,25 +46,31 @@ class Controller {
     }
 
     private fun viewShortestDistance() {
-        val (destStation, arrivalStation) = readStation() ?: run {
+        val (starting, destination) = readStation() ?: run {
             outputView.printErrorMessage(ERROR_SAME_STATION)
             return
         }
+        val pathResult = GraphRepository.getShortestDistancePath(starting, destination)
+        val vertexs = pathResult.first
+        val weight = pathResult.second
     }
 
     private fun viewShortestTime() {
-        val (destStation, arrivalStation) = readStation() ?: run {
+        val (starting, destination) = readStation() ?: run {
             outputView.printErrorMessage(ERROR_SAME_STATION)
             return
         }
+        val pathResult = GraphRepository.getShortestTimePath(starting, destination)
+        val vertexs = pathResult.first
+        val weight = pathResult.second
     }
 
     private fun readStation(): List<String>? {
         val validator = Validator()
         val result = mutableListOf<String>()
-        outputView.printDeptStationInputMent()
+        outputView.printStartingInputMent()
         result.add(inputView.readOption())
-        outputView.printArrivalStationInputMent()
+        outputView.printDestinationInputMent()
         result.add(inputView.readOption())
         return validator.checkStation(result)
     }
