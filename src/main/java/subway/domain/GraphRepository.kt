@@ -20,11 +20,11 @@ object GraphRepository {
         setDistanceGraphEdge()
     }
 
-    fun getTimeGraph():WeightedMultigraph<String?, DefaultWeightedEdge?>{
+    fun getTimeGraph(): WeightedMultigraph<String?, DefaultWeightedEdge?> {
         return timeGraph
     }
 
-    fun getDistanceGraph():WeightedMultigraph<String?, DefaultWeightedEdge?>{
+    fun getDistanceGraph(): WeightedMultigraph<String?, DefaultWeightedEdge?> {
         return distanceGraph
     }
 
