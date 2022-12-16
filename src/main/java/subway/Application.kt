@@ -1,9 +1,10 @@
 package subway
 
+import subway.controller.Controller
 import java.util.*
 
 
-fun main(args: Array<String>) {
-    val scanner = Scanner(System.`in`)
-    // TODO: 프로그램 구현
+fun main() {
+    val controller = Controller()
+    controller.operate()
 }
