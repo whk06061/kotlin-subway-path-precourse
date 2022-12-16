@@ -1,8 +1,6 @@
 package subway.view
 
-import subway.constants.OPTION_INPUT_MENT
-import subway.constants.MAIN_MENU
-import subway.constants.PATH_STANDARD_MENU
+import subway.constants.*
 
 class OutputView {
     fun printMainMenu() {
@@ -17,5 +15,21 @@ class OutputView {
     fun printPathStandardInputMent() {
         println()
         println(PATH_STANDARD_MENU)
+    }
+
+    fun printDeptStationInputMent() {
+        println()
+        println(DEPT_STATION_INPUT_MENT)
+    }
+
+    fun printArrivalStationInputMent() {
+        println()
+        println(ARRIVAL_STATION_INPUT_MENT)
+    }
+
+    fun printErrorMessage(message:String){
+        println()
+        println(message)
+        println()
     }
 }

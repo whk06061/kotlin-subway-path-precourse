@@ -5,7 +5,7 @@ import java.util.Scanner
 class InputView {
     private val scanner = Scanner(System.`in`)
 
-    fun readMenuOption(): String {
+    fun readOption(): String {
         return scanner.nextLine()
     }
 }
