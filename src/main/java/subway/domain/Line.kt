@@ -1,15 +1,10 @@
-package subway.domain;
+package subway.domain
 
-public class Line {
-    private String name;
+class Line(val name: String) {
 
-    public Line(String name) {
-        this.name = name;
+    private val stations: MutableList<Station> = mutableListOf()
+
+    fun addStation(station: Station) {
+        stations.add(station)
     }
-
-    public String getName() {
-        return name;
-    }
-
-    // 추가 기능 구현
 }
